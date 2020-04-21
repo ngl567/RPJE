@@ -415,8 +415,8 @@ private:
 		while (rule_ok.count(make_pair(rel_a, rel_rneg)) > 0)
 			rel_rneg = rand_max(relation_num);
 		double sum_neg = calc_rule(rel_a, rel_rneg);
-		if (sum_pos + marginrule > sum_neg){
-			res += margin + sum_pos - sum_neg;
+		if (rel_pconfi*sum_pos + marginrule > sum_neg){
+			res += margin + rel_pconfi*sum_pos - sum_neg;
 			gradient_rule(rel_a, rel_rpos, -lambda_rule);
 			gradient_rule(rel_a, rel_rneg, lambda_rule);
 		}
